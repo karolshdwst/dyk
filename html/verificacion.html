@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verificación de Código</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #content {
+            display: none;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Acceso Restringido</h1>
+    <p>Por favor, ingresa el código para acceder al contenido:</p>
+    <input type="password" id="codeInput" placeholder="Ingresa el código" />
+    <button onclick="verifyCode()">Verificar</button>
+    <p id="errorMessage" class="error"></p>
+
+    <div id="content">
+        <h2>Contenido Secreto</h2>
+        <p>¡Bienvenido al contenido restringido!</p>
+    </div>
+
+    <script>
+        const correctCode = "1234"; // Código predeterminado
+
+        function verifyCode() {
+            const userCode = document.getElementById("codeInput").value;
+            const errorMessage = document.getElementById("errorMessage");
+            const content = document.getElementById("content");
+
+            if (userCode === correctCode) {
+                errorMessage.textContent = "";
+                content.style.display = "block";
+            } else {
+                errorMessage.textContent = "El código es incorrecto.";
+                content.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>

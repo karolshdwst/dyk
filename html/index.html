@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DyK</title>
+    <style>
+        body {
+            background-image: url('../res/Background.jpg');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            text-shadow: 0px 0px 10px rgba(0,0,0,0.7);
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+            max-width: 600px;
+            width: 90%;
+            margin: 20px;
+        }
+
+        .photo {
+            width: 100%;
+            height: auto;
+            max-width: 500px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .photo:hover {
+            transform: scale(1.05);
+        }
+
+        .next-button {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 18px;
+            color: #fff;
+            background: linear-gradient(45deg, #ff0066, #ff66cc);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0px 5px 15px rgba(255, 0, 102, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .next-button:hover {
+            background: linear-gradient(45deg, #ff66cc, #ff0066);
+            transform: scale(1.05);
+            box-shadow: 0px 10px 20px rgba(255, 0, 102, 0.6);
+        }
+
+        /* Estilo para el input */
+        input[type="password"] {
+            width: 90%;
+            max-width: 500px;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            text-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+            transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        input[type="password"]:focus {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Estilo para el mensaje de error */
+        .error {
+            color: #ff0066;
+            font-size: 14px;
+            margin-top: 10px;
+            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const correctCode = "746520616d6f2064756c"; // Código predeterminado
+
+        function verifyCode() {
+            const userCode = document.getElementById("codeInput").value;
+            const errorMessage = document.getElementById("errorMessage");
+            const content = document.getElementById("content");
+
+            if (userCode === correctCode) {
+                errorMessage.textContent = "";
+                //content.style.display = "block";
+                window.location.href = "./content.html";
+            } else {
+                errorMessage.textContent = "El código es incorrecto.";
+                content.style.display = "none";
+            }
+        }
+    </script>
+    <div class="container">
+        <img src="../res/coca_coco.jpg" alt="Foto" class="photo">
+        <input type="password" id="codeInput" placeholder="Ingresa el código" />
+        <button onclick="verifyCode()" class="next-button">Verificar</button>
+        <p id="errorMessage" class="error"></p>
+    </div>
+</body>
+</html>
